@@ -6,11 +6,11 @@ const weatherDetails = document.querySelector('.weather-details');
 const error404 = document.querySelector('.not-found');
 
 search.addEventListener('click', () => {
-    console.log('Search button clicked');
+    
     const APIKey = '34eb4c7416a20332314c1eeeb037a8fd';
     const lat = document.querySelector('.search-box .lat').value;
     const lon = document.querySelector('.search-box .lon').value;
-    console.log(lat, lon);
+
 
     if (lat === '' || lon === '')
         return;
