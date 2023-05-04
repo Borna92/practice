@@ -1,54 +1,58 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="styles.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap"
+      rel="stylesheet"
+    />
     <title>Weather app</title>
-</head>
-<body>
-
+  </head>
+  <body>
     <div class="container">
-        <div class="search-box"></div>
-        <i class="fa-solid fa-location-dot"></i>
-        <input type="text" placeholder="Enter your location">
-        <button class="fa-solid fa-magnifying-glass"></button>
-    
+      <div class="search-box"></div>
+      <i class="fa-solid fa-location-dot"></i>
+      <input type="text" placeholder="Enter your location" />
+      <button class="fa-solid fa-magnifying-glass"></button>
 
-        <div class="not-found">
-            <img src="./images/404.png" width="200px">
-            <p>Oops! Invalid location :/</p>
+      <div class="not-found">
+        <img src="./images/404.png" width="200px" />
+        <p>Oops! Invalid location :/</p>
+      </div>
+
+      <div class="weather-box">
+        <img src="" />
+        <p class="temperature"></p>
+        <p class="description"></p>
+      </div>
+
+      <div class="weather-details">
+        <div class="humidity">
+          <i class="fa-solid fa-water"></i>
+          <div class="text">
+            <span></span>
+            <p>Humidity</p>
+          </div>
         </div>
-
-        <div class="weather-box">
-            <img src="">
-            <p class="temperature"></p>
-            <p class="description"></p>
+        <div class="wind">
+          <i class="fa-solid fa-wind"></i>
+          <div class="text">
+            <span></span>
+            <p>Wind Speed</p>
+          </div>
         </div>
+      </div>
+    </div>
 
-        <div class="weather-details">
-            <div class="humidity">
-                <i class="fa-solid fa-water"></i>
-                <div class="text">
-                    <span></span>
-                    <p>Humidity</p>
-                </div>
-            </div>
-            <div class="wind">
-                <i class="fa-solid fa-wind"></i>
-                <div class="text">
-                    <span></span>
-                    <p>Wind Speed</p>
-                </div>
-            </div>
-        </div>
-    </div>  
-
-    <script src="https://kit.fontawesome.com/7fabf2c84b.js" crossorigin="anonymous"></script>
+    <script
+      src="https://kit.fontawesome.com/7fabf2c84b.js"
+      crossorigin="anonymous"
+    ></script>
     <script src="index.js"></script>
-</body>
+  </body>
 </html>
