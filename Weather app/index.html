@@ -15,13 +15,15 @@
   </head>
   <body>
     <div class="container">
-      <div class="search-box"></div>
-      <i class="fa-solid fa-location-dot"></i>
-      <input type="text" placeholder="Enter your location" />
-      <button class="fa-solid fa-magnifying-glass"></button>
+      <div class="search-box">
+        <i class="fa-solid fa-location-dot"></i>
+        <input class='lat' type="text" placeholder="Lattitude" />
+        <input class='lon' type="text" placeholder="Longitude" />
+        <button class="fa-solid fa-magnifying-glass"></button>
+      </div>
 
       <div class="not-found">
-        <img src="./images/404.png" width="200px" />
+        <img src="./images/404.png"/>
         <p>Oops! Invalid location :/</p>
       </div>
 
@@ -39,6 +41,7 @@
             <p>Humidity</p>
           </div>
         </div>
+
         <div class="wind">
           <i class="fa-solid fa-wind"></i>
           <div class="text">
@@ -49,10 +52,7 @@
       </div>
     </div>
 
-    <script
-      src="https://kit.fontawesome.com/7fabf2c84b.js"
-      crossorigin="anonymous"
-    ></script>
+    <script src="https://kit.fontawesome.com/7fabf2c84b.js" crossorigin="anonymous"></script>
     <script src="index.js"></script>
   </body>
 </html>

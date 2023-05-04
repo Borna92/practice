@@ -24,3 +24,159 @@ body {
   font-family: "Roboto", sans-serif;
   transition: 0.6s ease-out;
 }
+
+.search-box {
+  width: 100%;
+  height: min-content;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.search-box input {
+  color: black;
+  width: 80%;
+  font-size: 1.5em;
+  font-weight: 600;
+  text-transform: uppercase;
+  padding-left: 2em;
+}
+
+.search-box input::placeholder {
+  font-size: 1.3rem;
+  font-weight: 500;
+  color: grey;
+  text-transform: capitalize;
+}
+
+.search-box button{
+  cursor: pointer;
+  width: 50px;
+  height: 50px;
+  color: grey;
+  background: #dff6ff;
+  border-radius: 50%;
+  font-size: 1rem;
+  transition: 0.4s ease;
+}
+
+.search-box button:hover {
+  color: #fff;
+  background: darkblue;
+}
+
+.search-box i {
+  position: absolute;
+  color: grey;
+  font-size: 1rem;
+}
+
+.weather-box {
+  text-align: center;
+}
+
+.weather-box img {
+  width: 60%;
+  margin-top: 30px;
+}
+
+.weather-box .temperature {
+  position: relative;
+  color: darkblue;
+  font-size: 4rem;
+  font-weight: 800;
+  margin-top: 30px;
+  margin-left: -1rem;
+}
+
+.weather-box .temperature span {
+  position: absolute;
+  margin-left: 4px;
+  font-size: 1.5rem;
+}
+
+.weather-box .description{
+  color: darkblue;
+  font-size: 1.5rem;
+  font-weight: 500;
+  text-transform: capitalize;
+}
+
+.weather-details {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  margin-top: 30px;
+}
+
+.weather-details .humidity, .weather-details .wind{
+  display: flex;
+  align-items: center;
+  width: 50%;
+  height: 100px;
+}
+
+.weather-details .humidity {
+  padding-left: 20px;
+  justify-content: flex-start;
+}
+
+.weather-details .wind {
+  padding-right: 20px;
+  justify-content: flex-end;
+}
+
+.weather-details i {
+  color: darkblue;
+  font-size: 1.5rem;
+  margin-right: 10px;
+  margin-top: 6px;
+}
+
+.weather-details span {
+  color: darkblue;
+  font-size: 1.3rem;
+  font-weight: 500;
+}
+
+.weather-details p{
+  color: darkblue;
+  font-size: 1rem;
+  font-weight: 800;
+}
+
+.not-found{
+  width: 100%;
+  text-align: center;
+  margin-top: 50px;
+  scale: 0;
+  opacity: 0;
+  display: none;
+}
+
+.not-found img {
+  width: 70%;
+}
+
+.not-found p {
+  color: darkblue;
+  font-size: 1.5rem;
+  margin-top: 1rem;
+}
+
+.weather-box, .weather-details{
+  scale: 0;
+  opacity: 0;
+}
+
+.fadeIn {
+  animation: 0.5s fadeIn forwards;
+  animation-delay: 0.5s;
+}
+
+@keyframes fadeIn {
+  to {
+    scale: 1;
+    opacity: 1;
+  }
+}
