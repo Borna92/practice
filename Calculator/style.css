@@ -1,0 +1,20 @@
+html{
+    box-sizing: border-box;
+    height: 100%;
+}
+
+*,*::before,*::after{
+    box-sizing: inherit;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(320deg, #ECF42C, #3AE675, #3AAEE6);
+    display: flex;
+    font-family: "Dosis", sans-serif;
+    font-display: swap;
+    height: inherit;
+}
