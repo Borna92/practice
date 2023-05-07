@@ -1,0 +1,41 @@
+body {
+    height: 50vh;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+}
+.container {
+    position: relative;
+    width: 320px;
+    height: 400px;
+    padding: 28px 32px;
+    background: linear-gradient(0.2turn, rgb(210, 228, 131), rgb(167, 243, 167));
+    border-radius: 18px;
+    top: 50px;
+}
+
+/* #grid {
+    width: 500px;
+    height: 300px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+} */
+
+img {
+    border-radius: 18px;
+    margin: auto 3px;
+}
+
+img:hover {
+    opacity: 0.5;
+}
+
+/* h3{
+    position: absolute;
+    top: 0;
+    left: 0;
+    margin: 20px;
+} */
