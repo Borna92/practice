@@ -20,8 +20,8 @@ body {
 .container {
   position: relative;
   width: 400px;
-  height: 800px;
-  background-image: linear-gradient(120deg, #1893c4, #fff);
+  height: 300px;
+  background-image: linear-gradient(80deg, #1893c4, #fff);
   padding: 28px 32px;
   overflow: hidden;
   border-radius: 18px;
