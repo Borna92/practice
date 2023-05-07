@@ -6,6 +6,7 @@ body {
     align-items: center;
     gap: 5px;
 }
+
 .container {
     position: relative;
     width: 320px;
