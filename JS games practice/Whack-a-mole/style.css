@@ -1,41 +1,44 @@
 body {
-    padding: 0px 10px;
+  padding: 0px 10px;
 }
 
 .grid {
-    width: 700px;
-    height: 700px;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
-    background-color: burlywood;
-    border-radius: 18px;
+  width: 700px;
+  height: 700px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  background-color: burlywood;
+  border-radius: 18px;
 }
 
 .square {
-    width: 198px;
-    height: 200px;
-    /* border: 1px solid burlywood; */
-    border-radius: 100px;
-    margin: 10px;
-    background-color: white;
+  width: 198px;
+  height: 200px;
+  /* border: 1px solid burlywood; */
+  border-radius: 100px;
+  margin: 10px;
+  background-color: white;
 }
 
 .mole {
-    background-color: blue;
+  background-image: url(images/mole.png);
+  background-size: contain;
+  background-position: 0px 50px;
+  background-repeat: no-repeat;
 }
 
 .container {
-    display: flex;
+  display: flex;
 }
 
 .container button {
-    margin: 10px;
-    width: 25px;
-    height: 50px;
-    border-radius: 18px;
+  margin: 10px;
+  width: 25px;
+  height: 50px;
+  border-radius: 18px;
 }
 
 .container button:hover {
-    opacity: 0.2;
+  opacity: 0.2;
 }
