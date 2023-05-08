@@ -1,0 +1,41 @@
+body {
+    padding: 0px 10px;
+}
+
+.grid {
+    width: 700px;
+    height: 700px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    background-color: burlywood;
+    border-radius: 18px;
+}
+
+.square {
+    width: 198px;
+    height: 200px;
+    /* border: 1px solid burlywood; */
+    border-radius: 100px;
+    margin: 10px;
+    background-color: white;
+}
+
+.mole {
+    background-color: blue;
+}
+
+.container {
+    display: flex;
+}
+
+.container button {
+    margin: 10px;
+    width: 25px;
+    height: 50px;
+    border-radius: 18px;
+}
+
+.container button:hover {
+    opacity: 0.2;
+}
