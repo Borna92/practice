@@ -6,6 +6,7 @@ const start = document.querySelector("#start");
 const reset = document.querySelector("#stop");
 const increaseTimer = document.querySelector("#plus");
 const decreaseTimer = document.querySelector("#minus");
+const hit = new Audio('sounds/whack.mp3');
 
 let result = 0;
 let hitPosition;
@@ -45,6 +46,7 @@ squares.forEach((square) => {
   square.addEventListener("click", () => {
     if (square.id == hitPosition) {
       result++;
+      hit.play()
       score.textContent = result;
       hitPosition = null;
     }

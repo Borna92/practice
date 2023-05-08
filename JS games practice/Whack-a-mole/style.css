@@ -34,11 +34,20 @@ body {
 
 .container button {
   margin: 10px;
-  width: 25px;
+  width: 40px;
   height: 50px;
   border-radius: 18px;
+  font-size: 2rem;
 }
 
 .container button:hover {
   opacity: 0.2;
+}
+
+.alignment {
+    flex: 0 0 130px;
+}
+
+#score {
+    margin-right: 20px;
 }
