@@ -42,7 +42,7 @@ function game() {
 }
 
 squares.forEach((square) => {
-  square.addEventListener("mousedown", () => {
+  square.addEventListener("click", () => {
     if (square.id == hitPosition) {
       result++;
       score.textContent = result;
@@ -60,6 +60,7 @@ function timeDecrease() {
   currentTime--;
   timeLeft.innerHTML = currentTime;
 }
+
 function resetGame() {
   clearInterval(gameInterval);
   clearInterval(countdownInterval);
