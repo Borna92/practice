@@ -1,76 +1,82 @@
 body {
-  padding: 0px 10px;
+  height: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  background-image: linear-gradient(0.25turn, #1893c4, #fff);
+  background-size: cover;
+}
+
+.score-time {
+  width: 90%;
+  height: min-content;
+  display: flex;
+  flex-wrap: wrap;
+  padding: 10px;
+  margin: 10px;
+}
+
+.score-time .s {
+  flex: 0.8;
+  align-self: center;
+  text-align: center;
+}
+.score-time .t {
+  flex: 0.8;
+  align-self: center;
 }
 
 .grid {
-  width: 700px;
-  height: 700px;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 10px;
-  background-color: burlywood;
-  border-radius: 18px;
+  align-content: center;
+  gap: 20px;
+  background: linear-gradient(0.3turn, rgb(240, 177, 96), #ecd468);
+  height: 500px;
+  width: 450px;
+  border-radius: 20px;
 }
 
 .square {
-  width: 198px;
-  height: 200px;
-  /* border: 1px solid burlywood; */
-  border-radius: 100px;
-  margin: 10px;
-  background-color: white;
+  background-color: #fff;
+  height: 100px;
+  width: 100px;
+  border-radius: 18px;
 }
 
 .mole {
   background-image: url(images/mole.png);
   background-size: cover;
-  background-position: -80px 0px;
   background-repeat: no-repeat;
+  background-position: center;
 }
 
-.container {
+.start-reset {
   display: flex;
-  flex-wrap: wrap;
+  justify-content: space-evenly;
+  margin-top: 20px;
 }
 
-.container button {
-  margin: 10px;
-  width: 40px;
+.start-reset button {
+  width: 150px;
   height: 50px;
-  border-radius: 18px;
-  justify-content: center;
-  font-size: 2rem;
-}
-
-.container button:hover {
-  opacity: 0.2;
-}
-
-.alignment {
-    flex: 0 0 130px;
-}
-
-#score {
-    margin-right: 20px;
-}
-
-.bottom-container{
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  margin: 20px;
-  gap: 5px;
-  left: 200px;
-}
-
-.bottom-container button {
   font-size: 1.5rem;
-  background: linear-gradient(0.8turn,#fff, rgb(116, 156, 241));
-  border-radius: 18px;
-  padding: 10px;
+  font-weight: 600;
+  border-radius: 10px;
+  background: linear-gradient(0.2turn, rgb(114, 183, 230), rgb(202, 241, 202));
 }
 
-.bottom-container button:hover{
-  opacity: 0.7;
+.start-reset button:hover {
+  opacity: 0.5;
+}
+
+.t h2 {
+  display: inline;
+}
+
+#plus,
+#minus {
+  margin-left: 5px;
 }
