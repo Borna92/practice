@@ -6,12 +6,13 @@ const start = document.querySelector("#start");
 const reset = document.querySelector("#stop");
 const increaseTimer = document.querySelector("#plus");
 const decreaseTimer = document.querySelector("#minus");
-const hit = new Audio('sounds/whack.mp3');
+const hit = new Audio("sounds/whack.mp3");
 
 let result = 0;
 let hitPosition;
 const defaultTime = 60;
 let currentTime = document.getElementById("time-left").textContent;
+let gameInProgress = false;
 
 function randomSquare() {
   let active = Math.floor(Math.random() * squares.length);
@@ -34,10 +35,17 @@ function countDown() {
     clearInterval(countdownInterval);
     clearInterval(gameInterval);
     alert("Time is up! Your final score is " + result);
+    gameInProgress = false;
+    start.disabled = false;
   }
 }
 
 function game() {
+  if (gameInProgress) {
+    return;
+  }
+  gameInProgress = true;
+  start.disabled = true;
   gameInterval = setInterval(randomSquare, 1000);
   countdownInterval = setInterval(countDown, 1000);
 }
@@ -46,7 +54,7 @@ squares.forEach((square) => {
   square.addEventListener("click", () => {
     if (square.id == hitPosition) {
       result++;
-      hit.play()
+      hit.play();
       score.textContent = result;
       hitPosition = null;
     }
@@ -73,6 +81,8 @@ function resetGame() {
   squares.forEach((square) => {
     square.classList.remove("mole");
   });
+  gameInProgress = false;
+  start.disabled = false;
 }
 
 increaseTimer.addEventListener("click", timeIncrease);
