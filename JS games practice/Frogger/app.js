@@ -12,7 +12,6 @@ const startPosition = 76;
 let timeLeft = timeLeftDisplay.innerHTML;
 let currentIndex = startPosition;
 let gameInterval;
-let timeInterval;
 let gameInProgress = false;
 
 function moveFrog(e) {
@@ -56,6 +55,8 @@ function checkWin() {
 }
 
 function autoMoveElements() {
+  timeLeft--;
+  timeLeftDisplay.innerHTML = timeLeft;
   logsLeft.forEach((logLeft) => moveLogLeft(logLeft));
   logsRight.forEach((logRight) => moveLogRight(logRight));
   carsLeft.forEach((carLeft) => moveCarLeft(carLeft));
@@ -150,36 +151,30 @@ function moveCarRight(carRight) {
 function stopGame() {
   document.removeEventListener("keydown", moveFrog);
   clearInterval(gameInterval);
-  clearInterval(timeInterval);
   gameInProgress = false;
-  
 }
 
 function checkLose() {
   if (
     squares[currentIndex].classList.contains("c1") ||
     squares[currentIndex].classList.contains("l4") ||
-    squares[currentIndex].classList.contains("l5")
+    squares[currentIndex].classList.contains("l5") ||
+    timeLeft == 0
   ) {
     resultDisplay.innerHTML = "YOU LOSE";
     stopGame();
     setTimeout(resetGame, 1000);
   }
-  if (timeLeft == 0) {
-    resultDisplay.innerHTML = "YOU LOSE";
-    stopGame();
-    setTimeout(resetGame, 1000);
-  }
+
 }
 
 function startGame() {
   if (!gameInProgress) {
     stopGame();
     gameInterval = setInterval(autoMoveElements, 1000);
-    timeInterval = setInterval(timer, 1000);
     document.addEventListener("keydown", moveFrog);
     gameInProgress = true;
-  } else if (gameInProgress){
+  } else if (gameInProgress) {
     stopGame();
   }
 }
@@ -194,11 +189,6 @@ function resetGame() {
     squares[i].classList.remove("frog");
   }
   currentIndex = startPosition;
-}
-
-function timer() {
-  timeLeft--;
-  timeLeftDisplay.innerHTML = timeLeft;
 }
 
 startPauseButton.addEventListener("click", startGame);
