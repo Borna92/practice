@@ -9,6 +9,7 @@
 .grid div {
   height: 80px;
   width: 80px;
+  
 }
 
 .ending-block {
@@ -49,9 +50,14 @@
   background-color: lightgrey;
 }
 
+.grass {
+    background-image: url(images/grass.jpg);
+    background-size: cover;
+}
 button{
     margin-bottom: 10px;
 }
+
 .frog {
     background-image: url(images/frog.png);
     background-size: contain;
