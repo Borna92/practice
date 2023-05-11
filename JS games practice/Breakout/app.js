@@ -50,7 +50,7 @@ function addBlocks() {
     block.classList.add("block");
     block.style.left = blocks[i].bottomLeft[0] + "px";
     block.style.bottom = blocks[i].bottomLeft[1] + "px";
-    grid.appendChild(block);
+    grid.append(block);
   }
 }
 
@@ -59,7 +59,7 @@ addBlocks();
 const user = document.createElement("div");
 user.classList.add("user");
 drawUser();
-grid.appendChild(user);
+grid.append(user);
 
 //add user
 function drawUser() {
@@ -125,7 +125,7 @@ pause.addEventListener("click", pauseGame);
 const ball = document.createElement("div");
 ball.classList.add("ball");
 drawBall();
-grid.appendChild(ball);
+grid.append(ball);
 
 //move the ball
 function moveBall() {
