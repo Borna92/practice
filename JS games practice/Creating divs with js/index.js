@@ -4,9 +4,18 @@ const button = document.querySelector("#go");
 const clear = document.querySelector("#clear");
 const size = document.querySelectorAll(".buttons");
 const errorDisplay = document.querySelector("#errorMessage");
+const randomNumberDisplay = document.querySelector('#random-number')
+const attemptsDisplay = document.querySelector('#number-of-attempts')
+let array = []
+let randomized;
+let attempts = 1
 
 
 function drawGrid(n) {
+  randomized = Math.floor(Math.random()*n)
+  randomNumberDisplay.innerHTML = randomized
+  attemptsDisplay.innerHTML = 0
+  array = []
   clearGrid();
   let t = document.querySelectorAll("div");
   if (t.length + parseInt(n) > 51) {
@@ -16,17 +25,39 @@ function drawGrid(n) {
   for (let i = 0; i < n; i++) {
     let tile = document.createElement("div");
     tile.classList.add("tile");
-    grid.append(tile);
+    tile.setAttribute('id', i);
+    tile.addEventListener('click', flip)
+    array.push(tile)
   }}
+  array.sort(() => 0.5 - Math.random())
+  array.forEach((item) => grid.append(item))
+}
+
+
+function flip (){
+  this.innerHTML = this.id
+  attemptsDisplay.innerHTML = attempts
+  attempts++
+  if(randomized == this.id){
+    this.classList.add('selected')
+    userInput.value = ''
+    clearGrid()
+  } else if (randomized != this.id){
+    this.classList.add('incorrect')
+  }
 }
 
 function clearGrid() {
   let tiles = document.querySelectorAll(".tile");
+  arr = []
+  attempts = 1
   setTimeout(() => {errorDisplay.innerHTML = ''},2000)
   tiles.forEach((tile) => {
-    tile.remove();
+    tile.removeEventListener('click', flip);
+    tile.classList.remove('selected')
+    tile.innerHTML = ''
+    tile.remove()
   });
-  
 }
 
 button.addEventListener('click', () => {drawGrid(userInput.value)})
@@ -59,6 +90,7 @@ clear.addEventListener("click", clearGrid);
 size.forEach((button) => {
   button.addEventListener("click", () => {
     clearGrid();
+    array = []
     drawGrid(button.id);
   });
 });
