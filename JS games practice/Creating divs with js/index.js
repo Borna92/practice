@@ -7,6 +7,7 @@ const errorDisplay = document.querySelector("#errorMessage");
 
 
 function drawGrid(n) {
+  clearGrid();
   let t = document.querySelectorAll("div");
   if (t.length + parseInt(n) > 51) {
     errorDisplay.innerHTML = "Select a number lower than  or equal to 50";
@@ -58,7 +59,6 @@ clear.addEventListener("click", clearGrid);
 size.forEach((button) => {
   button.addEventListener("click", () => {
     clearGrid();
-    t = document.querySelectorAll("div");
     drawGrid(button.id);
   });
 });
