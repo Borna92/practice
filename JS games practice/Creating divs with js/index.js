@@ -1,24 +1,22 @@
 const grid = document.querySelector(".grid");
-const test = document.querySelector("#testRows");
+const userInput = document.querySelector("#testRows");
 const button = document.querySelector("#go");
 const clear = document.querySelector("#clear");
 const size = document.querySelectorAll(".buttons");
 const errorDisplay = document.querySelector("#errorMessage");
-let tiles;
-let t = document.querySelectorAll("div");
+
 
 function drawGrid(n) {
-  if (t.length + parseInt(n) > 50) {
+  let t = document.querySelectorAll("div");
+  if (t.length + parseInt(n) > 51) {
     errorDisplay.innerHTML = "Select a number lower than  or equal to 50";
     clearGrid();
-  }
+  } else {
   for (let i = 0; i < n; i++) {
-    let tiles = document.querySelectorAll(".tile");
-    t = document.querySelectorAll("div");
     let tile = document.createElement("div");
     tile.classList.add("tile");
     grid.append(tile);
-  }
+  }}
 }
 
 function clearGrid() {
@@ -30,7 +28,7 @@ function clearGrid() {
   
 }
 
-button.addEventListener('click', () => {drawGrid(test.value)})
+button.addEventListener('click', () => {drawGrid(userInput.value)})
 
 // button.addEventListener("click", () => {
 //   t = document.querySelectorAll("div");
