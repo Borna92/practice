@@ -17,8 +17,8 @@ function drawGrid(n) {
   attemptsDisplay.innerHTML = 0
   array = []
   clearGrid();
-  let t = document.querySelectorAll("div");
-  if (t.length + parseInt(n) > 51) {
+  let t = document.querySelectorAll(".grid div");
+  if (t.length + parseInt(n) > 50) {
     errorDisplay.innerHTML = "Select a number lower than  or equal to 50";
     clearGrid();
   } else {
