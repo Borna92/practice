@@ -11,6 +11,11 @@
     height: 20px;
 }
 
+.container {
+    display: flex;
+    gap: 10px;
+}
+
 .invader {
     background-color: purple;
     border-radius: 50%;

@@ -5,6 +5,7 @@ const missilesDisplay = document.querySelector(".missiles");
 const accuracyDisplay = document.querySelector(".accuracy");
 const startButton = document.querySelector(".start");
 const resetButton = document.querySelector(".reset");
+const gameSpeed = document.querySelector("#speed");
 let alienInvaders = [];
 let currentShooterIndex = Math.floor(Math.random() * (209 - 195) + 195);
 const width = 15;
@@ -16,6 +17,12 @@ let accuracy;
 let gameRunning = false;
 let canShoot = true;
 accuracyDisplay.innerHTML = "100 %";
+
+gameSpeed.addEventListener("click", getSpeed);
+
+function getSpeed() {
+  return gameSpeed.value * 100;
+}
 
 for (let i = 0; i < 225; i++) {
   if ((i >= 0 && i <= 9) || (i >= 15 && i <= 24) || (i >= 30 && i <= 39)) {
@@ -99,18 +106,16 @@ function moveInvaders() {
 
   if (squares[currentShooterIndex].classList.contains("invader", "shooter")) {
     resultDisplay.innerHTML = "Game Over";
-    clearInterval(invadersId);
+    stopGame()
   } else if (alienInvaders.length === 0) {
     resultDisplay.innerHTML = "Congratulations, you WIN!";
-    clearInterval(invadersId);
-    gameRunning = false;
+    stopGame()
   }
 
   for (let i = 0; i < alienInvaders.length; i++) {
     if (alienInvaders[i] > squares.length) {
       resultDisplay.innerHTML = "Game Over";
-      clearInterval(invadersId);
-      gameRunning = false;
+      stopGame()
     }
   }
 }
@@ -125,12 +130,19 @@ function updateAccuracy() {
 }
 
 function startGame() {
-  if (!gameRunning) {
-    invadersId = setInterval(moveInvaders, 500);
+  if (!gameRunning && alienInvaders.length === 30) {
+    invadersId = setInterval(moveInvaders, getSpeed());
     gameRunning = true;
     document.addEventListener("keydown", shoot);
     document.addEventListener("keydown", moveShooter);
   }
+}
+
+function stopGame() {
+  clearInterval(invadersId);
+  gameRunning = false;
+  document.removeEventListener("keydown", shoot);
+  document.removeEventListener("keydown", moveShooter);
 }
 
 startButton.addEventListener("click", startGame);
@@ -173,7 +185,7 @@ function shoot(e) {
         laserId = setInterval(moveLaser, 100);
         missiles++;
         missilesDisplay.innerHTML = missiles;
-        setTimeout(() => canShoot = true, 300);
+        setTimeout(() => (canShoot = true), 300);
         break;
     }
   }
