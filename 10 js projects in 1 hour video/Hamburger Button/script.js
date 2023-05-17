@@ -1,7 +1,9 @@
-const btn = document.getElementById("btn");
-const nav = document.getElementById("nav");
+const box = document.querySelector(".box");
 
-btn.addEventListener("click", () => {
-  nav.classList.toggle("active");
-  btn.classList.toggle("active");
+document.addEventListener("mousemove", (e) => {
+  let x = e.clientX;
+  let y = e.clientY;
+  box.style.left = x - 10 + "px";
+  box.style.top = y - 10 +"px";
+  console.log(x, y);
 });
