@@ -82,15 +82,20 @@ const menu = [
 ];
 
 const section = document.querySelector(".section-center");
-const buttons = document.querySelectorAll('button')
+const buttonContainer = document.querySelector(".btn-container");
 
 window.addEventListener("DOMContentLoaded", () => {
-  createPage(menu)
+  createPage(menu);
+  displayFilterButtons(menu);
+  const buttons = document.querySelectorAll("button");
+  buttons.forEach((button) => {
+    button.addEventListener("click", filter);
+  });
 });
 
-function createPage(menuItems){
+function createPage(menuItems) {
   let displayMenu = menuItems.map((item) => {
-     return `<article class="menu-item">
+    return `<article class="menu-item">
             <img src=${item.img} class="photo" alt="menu item">
             <div class="item-info">
               <header>
@@ -101,23 +106,55 @@ function createPage(menuItems){
             </div>
           </article>`;
   });
-  section.innerHTML = displayMenu.join(' ')
+  section.innerHTML = displayMenu.join(" ");
 }
 
-buttons.forEach((button) => {
-  button.addEventListener('click',(e) => {
-    const cat = e.currentTarget.dataset.id
-    const menuFiltered = menu.filter((menuItem) => {
-      if (menuItem.category === cat){
-        return menuItem
-      }  
-    })
-    if (cat === 'all'){
-      createPage(menu)
-    } else {
-      createPage(menuFiltered)
+// buttons.forEach((button) => {
+//   button.addEventListener('click',(e) => {
+//     const cat = e.currentTarget.dataset.id
+//     const menuFiltered = menu.filter((menuItem) => {
+//       if (menuItem.category === cat){
+//         return menuItem
+//       }
+//     })
+//     if (cat === 'all'){
+//       createPage(menu)
+//     } else {
+//       createPage(menuFiltered)
+//     }
+//   })
+// })
+
+function filter() {
+  const cat = this.id;
+  const menuFiltered = menu.filter((menuItem) => {
+    if (menuItem.category === cat) {
+      return menuItem;
     }
-  })
-})
+  });
+  if (cat === "all") {
+    createPage(menu);
+  } else {
+    createPage(menuFiltered);
+  }
+}
 
+function displayFilterButtons(menu) {
+  let unique = ["all"];
+  menu.map((item) => {
+    if (!unique.includes(item.category)) {
+      unique.push(item.category);
+    }
+  });
 
+  let displayFilters = unique.map((item) => {
+    return `<button class="filter-btn" type="button" id="${item}">${item}</button>`;
+  });
+
+  buttonContainer.innerHTML = displayFilters.join("");
+
+  // const buttons = document.querySelectorAll("button");
+  // buttons.forEach((button) => {
+  //   button.addEventListener("click", filter);
+  // });
+}
