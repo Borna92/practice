@@ -24,7 +24,7 @@ const weekdays = [
 
 const deadline = document.querySelector(".deadline");
 const giveaway = document.querySelector(".giveaway");
-const items = document.querySelectorAll(".deadline-format h4");
+const items = document.querySelectorAll(".values-container number");
 
 let futureDate = new Date(2024, 4, 19, 11, 41, 55);
 
