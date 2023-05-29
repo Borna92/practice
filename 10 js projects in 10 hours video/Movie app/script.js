@@ -24,7 +24,6 @@ getMovies(APIURL + pageCounter);
 async function getMovies(value) {
   const resp = await fetch(value);
   const respData = await resp.json();
-  console.log(respData.results);
   displayMovies(respData.results);
 
   return respData;
