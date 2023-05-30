@@ -88,6 +88,10 @@ body {
     color: #0e2a5a;
 }
 
+#generate-btn:active {
+    transform: scale(0.97);
+}
+
 #len {
     width: 3rem;
     border: none;
