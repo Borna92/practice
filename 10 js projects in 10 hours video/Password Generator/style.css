@@ -56,7 +56,6 @@ body {
     opacity: 0;
     cursor: pointer;
     font-size: 1.5rem;
-    font-weight: 500;
     background-color: transparent;
 }
 
@@ -87,4 +86,11 @@ body {
     cursor: pointer;
     border: none;
     color: #0e2a5a;
+}
+
+#len {
+    width: 3rem;
+    border: none;
+    border-radius: 5px;
+    text-align: center;
 }
