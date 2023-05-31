@@ -20,12 +20,12 @@ body {
 
 .container {
   height: auto;
-  width: 400px;
+  width: 500px;
   background-color: #1fd1f9;
 background-image: linear-gradient(315deg, #1fd1f9 0%, #b621fe 74%);
   border-radius: 15px;
   overflow: hidden;
-  
+position: relative;
 }
 
 .temp-container {
@@ -60,12 +60,23 @@ background-image: linear-gradient(315deg, #1fd1f9 0%, #b621fe 74%);
 .day {
   display: flex;
   justify-content: space-between;
-  position: relative;
+}
+
+.text-container {
+    align-self: end;
+    padding-right: 4.5rem;
+}
+
+.text {
+    margin-left: 2.5rem;
+}
+
+.weekday {
+    width: 200px; 
 }
 
 .temp {
-  position: absolute;
-  right: 2.5rem;
+    width: 60px;
 }
 
 #input {
