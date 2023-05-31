@@ -11,8 +11,6 @@ body {
   color: #fff;
   background-color: #54a0ff;
   margin: 0;
-  height: 100vh;
-  width: 100vw;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -21,6 +19,7 @@ body {
 .container {
   height: auto;
   width: 500px;
+  margin: 50px;
   background-color: #1fd1f9;
   background-image: linear-gradient(315deg, #1fd1f9 0%, #b621fe 74%);
   border-radius: 15px;
@@ -82,6 +81,7 @@ body {
 #input {
   padding: 1rem;
   border-radius: 15px;
+  border: none;
   background-color: transparent;
   color: #fff;
   width: 100%;
@@ -95,6 +95,10 @@ body {
   color: #fff;
   font-size: 1.5rem;
   font-weight: bolder;
+}
+
+#input:focus {
+  outline: none;
 }
 
 .temp-main {
@@ -114,9 +118,19 @@ img {
   cursor: pointer;
 }
 
+.unit-container {
+  display: flex;
+  flex-direction: column;
+  color: #fff;
+  font-size: 1rem;
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+}
 
-
-
+.unit,.unit input {
+  cursor: pointer;
+}
 
 /* Dropdown Button */
 .dropbtn {
@@ -135,7 +149,6 @@ img {
   top: 2.5rem;
   right: 1rem;
   display: inline-block;
-  
 }
 
 /* Dropdown Content (Hidden by Default) */
@@ -143,12 +156,12 @@ img {
   display: none;
   position: absolute;
   background-color: #f1f1f1;
-  min-width: 50px;
+  min-width: 95px;
   box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
   z-index: 1;
   border-radius: 15px;
   overflow: hidden;
-  margin-left: 1.5rem;
+
 }
 
 /* Links inside the dropdown */

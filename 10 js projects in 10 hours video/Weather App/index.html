@@ -19,14 +19,18 @@
     <div class="temp-container">
       <form><input id="input" type="text" placeholder="Search City" autocomplete="off"></form>
       <div class="dropdown">
-        <button class="dropbtn">Days <i class="fa-solid fa-caret-down"></i></button>
+        <button class="dropbtn-days dropbtn">Days <i class="fa-solid fa-caret-down"></i></button>
         <div class="dropdown-content">
-          <a href="#">1</a>
-          <a href="#">3</a>
-          <a href="#">7</a>
-          <a href="#">14</a>
-          <a href="#">16</a>
+          <a href="#" class="forecast-day">1 day</a>
+          <a href="#" class="forecast-day">3 days</a>
+          <a href="#" class="forecast-day">7 days</a>
+          <a href="#" class="forecast-day">14 days</a>
+          <a href="#" class="forecast-day">16 days</a>
         </div>
+      </div>
+      <div class="unit-container">
+        <label class="unit" for="celsius"><input id="celsius" name="unit" type="radio" checked> °C</label>
+        <label class="unit" for="fahrenheit"><input id="fahrenheit" name="unit" type="radio"> °F</label>
       </div>
       <span class="temp-main"></span>
       <span class="weather-main"></span>

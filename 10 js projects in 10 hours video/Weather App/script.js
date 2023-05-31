@@ -1,5 +1,5 @@
 const APIKEY =
-  "https://api.open-meteo.com/v1/forecast?latitude=43.65&longitude=-79.34&hourly=is_day&models=best_match&daily=weathercode,temperature_2m_max,temperature_2m_min&current_weather=true&timezone=auto";
+  "https://api.open-meteo.com/v1/forecast?latitude=43.65&longitude=-79.34&hourly=is_day&models=best_match&daily=weathercode,temperature_2m_max,temperature_2m_min&current_weather=true&timezone=auto&forecast_days=16";
 
 const currTemp = document.querySelector(".temp-main");
 const currWeather = document.querySelector(".weather-main");
@@ -7,6 +7,13 @@ const container = document.querySelector(".temp-container");
 const input = document.getElementById("input");
 const searchForm = document.querySelector("form");
 const forecastDisplay = document.querySelector(".forecast-container");
+const dropdown = document.querySelector(".dropdown-content");
+const ddBtn = document.querySelector(".dropbtn-days");
+const forecastDays = document.querySelectorAll(".forecast-day");
+const units = document.querySelectorAll(".unit");
+
+let days = 7;
+let unit = 'celsius'
 
 const weekdays = [
   "Sunday",
@@ -20,9 +27,9 @@ const weekdays = [
 
 const today = new Date();
 
-async function getWeatherData(lat, lon) {
+async function getWeatherData(lat, lon, days) {
   const respData = await fetch(
-    `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&hourly=is_day&models=best_match&daily=weathercode,temperature_2m_max,temperature_2m_min&current_weather=true&timezone=auto`
+    `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&hourly=is_day&models=best_match&daily=weathercode,temperature_2m_max,temperature_2m_min&current_weather=true&timezone=auto&forecast_days=${days}&temperature_unit=${unit}`
   );
   const response = await respData.json();
 
@@ -39,7 +46,7 @@ function displayWeather(response) {
   forecastDisplay.innerHTML =
     '<div class="text-container"><span class="text">Min</span><span class="text">Max</span></div>';
 
-  for (let i = 0; i < weekdays.length; i++) {
+  for (let i = 0; i < days; i++) {
     const day = document.createElement("div");
     day.classList.add("day");
     day.innerHTML = `<span class="weekday_1 weekday">${
@@ -57,14 +64,6 @@ function displayWeather(response) {
   } else if (isDay === 1) {
     container.style = "background-image: url(images/day.jpg);";
   }
-
-  // const buttons = document.querySelectorAll('.weekday')
-
-  // buttons.forEach((button) => {
-  //   button.addEventListener('click', () => {
-  //     console.log(weekdays.indexOf(button.innerHTML))
-  //   })
-  // })
 }
 
 searchForm.addEventListener("submit", (e) => {
@@ -73,13 +72,37 @@ searchForm.addEventListener("submit", (e) => {
   getCoords();
 });
 
+forecastDays.forEach((day) => {
+  day.addEventListener("click", () => {
+    days = day.innerHTML.split(" ")[0];
+    if (days != 1) {
+      ddBtn.innerHTML = days + ` days <i class="fa-solid fa-caret-down">`;
+    } else {
+      ddBtn.innerHTML = days + ` day <i class="fa-solid fa-caret-down">`;
+    }
+    if(input.value){
+      getCoords()
+    }
+  });
+});
+
+
+units.forEach((unitValue) => {
+  unitValue.addEventListener('click', () => {
+    unit = unitValue.getAttribute('for')
+    if(input.value){
+      getCoords()
+    }
+  })
+})
+
 async function getCoords() {
   const search = `https://nominatim.openstreetmap.org/search/${input.value}?format=json`;
   const respData = await fetch(search);
   const response = await respData.json();
 
   if (response.length != 0) {
-    getWeatherData(response[0].lat, response[0].lon);
+    getWeatherData(response[0].lat, response[0].lon, days);
   } else {
     input.value = "Invalid City";
     currTemp.innerHTML = "";
