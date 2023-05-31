@@ -6,6 +6,7 @@ const currWeather = document.querySelector(".weather-main");
 const container = document.querySelector(".temp-container");
 const input = document.getElementById("input");
 const searchForm = document.querySelector("form");
+const forecastDisplay = document.querySelector(".forecast-container");
 
 const weekdays = [
   "Sunday",
@@ -34,24 +35,21 @@ function displayWeather(response) {
 
   currTemp.innerHTML = response.current_weather.temperature + "°";
   currWeather.innerHTML = weatherType[0];
-  // set weekdays for the next 7 days
-  for (let i = 1; i <= weekdays.length; i++) {
-    const weekdayElement = document.querySelector(`.weekday_${i}`);
-    weekdayElement.innerHTML = weekdays[(today.getDay() + i) % weekdays.length];
-  }
-  // set temps for the next 7 days
-  for (let i = 0; i < weekdays.length; i++) {
-    const weekdayElementMax = document.querySelector(`.temp_${i + 1}_max`);
-    weekdayElementMax.innerHTML = response.daily.temperature_2m_max[i] + "°";
-    const weekdayElementMin = document.querySelector(`.temp_${i + 1}_min`);
-    weekdayElementMin.innerHTML = response.daily.temperature_2m_min[i] + "°";
-  }
 
-  //   // set weather icon for the next 7 days
+  forecastDisplay.innerHTML =
+    '<div class="text-container"><span class="text">Min</span><span class="text">Max</span></div>';
+
   for (let i = 0; i < weekdays.length; i++) {
-    const weekdayElement = document.querySelector(`.img_${i + 1}`);
-    const weatherIcon = getWeatherType(response.daily.weathercode[i]);
-    weekdayElement.innerHTML = weatherIcon[1];
+    const day = document.createElement("div");
+    day.classList.add("day");
+    day.innerHTML = `<span class="weekday_1 weekday">${
+      weekdays[(today.getDay() + i + 1) % weekdays.length]
+    }</span></span><span class="temp temp_1_min">${
+      response.daily.temperature_2m_min[i] + "°"
+    }</span><span class="temp temp_1_max">${
+      response.daily.temperature_2m_max[i] + "°"
+    }</span><span class="weather_img img_1">${weatherType[1]}</span>`;
+    forecastDisplay.append(day);
   }
 
   if (isDay === 0) {
@@ -60,11 +58,18 @@ function displayWeather(response) {
     container.style = "background-image: url(images/day.jpg);";
   }
 
-  input.setAttribute("placeholder", `${response.timezone}`);
+  // const buttons = document.querySelectorAll('.weekday')
+
+  // buttons.forEach((button) => {
+  //   button.addEventListener('click', () => {
+  //     console.log(weekdays.indexOf(button.innerHTML))
+  //   })
+  // })
 }
 
 searchForm.addEventListener("submit", (e) => {
   e.preventDefault();
+  forecastDisplay.innerHTML = "";
   getCoords();
 });
 
@@ -76,7 +81,10 @@ async function getCoords() {
   if (response.length != 0) {
     getWeatherData(response[0].lat, response[0].lon);
   } else {
-    input.value = 'Invalid City'
+    input.value = "Invalid City";
+    currTemp.innerHTML = "";
+    currWeather.innerHTML = "";
+    container.style = "background-image: none";
   }
 }
 
