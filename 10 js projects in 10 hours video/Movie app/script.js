@@ -157,8 +157,8 @@ function displayFavorites() {
     deleteBtn.classList.add("delete", "fa-solid", "fa-trash-can");
     movie.append(deleteBtn);
     movie.removeChild(favBtn);
+
     deleteBtn.addEventListener("click", () => {
-      console.log(mainDisplay);
       movie.remove();
       const posterPath = movie.querySelector("img").getAttribute("src");
       const voteAverage = movie
