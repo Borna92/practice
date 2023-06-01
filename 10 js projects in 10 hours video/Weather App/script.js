@@ -13,7 +13,7 @@ const forecastDays = document.querySelectorAll(".forecast-day");
 const units = document.querySelectorAll(".unit");
 
 let days = 7;
-let unit = 'celsius'
+let unit = "celsius";
 
 const weekdays = [
   "Sunday",
@@ -31,6 +31,7 @@ async function getWeatherData(lat, lon, days) {
   const respData = await fetch(
     `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&hourly=is_day&models=best_match&daily=weathercode,temperature_2m_max,temperature_2m_min&current_weather=true&timezone=auto&forecast_days=${days}&temperature_unit=${unit}`
   );
+  
   const response = await respData.json();
 
   displayWeather(response);
@@ -75,40 +76,38 @@ searchForm.addEventListener("submit", (e) => {
 forecastDays.forEach((day) => {
   day.addEventListener("click", () => {
     days = day.innerHTML.split(" ")[0];
-    if (days != 1) {
-      ddBtn.innerHTML = days + ` days <i class="fa-solid fa-caret-down">`;
-    } else {
-      ddBtn.innerHTML = days + ` day <i class="fa-solid fa-caret-down">`;
-    }
-    if(input.value){
-      getCoords()
-    }
+
+    //ternary if else statement:
+
+    days != 1
+      ? (ddBtn.innerHTML = days + ` days <i class="fa-solid fa-caret-down">`)
+      : (ddBtn.innerHTML = days + ` day <i class="fa-solid fa-caret-down">`);
+
+    // ternary if there is an input, execute the function
+    input.value && getCoords();
   });
 });
 
-
 units.forEach((unitValue) => {
-  unitValue.addEventListener('click', () => {
-    unit = unitValue.getAttribute('for')
-    if(input.value){
-      getCoords()
-    }
-  })
-})
+  unitValue.addEventListener("click", () => {
+    unit = unitValue.getAttribute("for");
+    // ternary if there is an input, execute the function
+    input.value && getCoords();
+  });
+});
 
 async function getCoords() {
   const search = `https://nominatim.openstreetmap.org/search/${input.value}?format=json`;
   const respData = await fetch(search);
   const response = await respData.json();
 
-  if (response.length != 0) {
-    getWeatherData(response[0].lat, response[0].lon, days);
-  } else {
-    input.value = "Invalid City";
-    currTemp.innerHTML = "";
-    currWeather.innerHTML = "";
-    container.style = "background-image: none";
-  }
+  // ternary if-else statement:
+  response.length !== 0
+    ? getWeatherData(response[0].lat, response[0].lon, days)
+    : ((input.value = "Invalid City"),
+      (currTemp.innerHTML = ""),
+      (currWeather.innerHTML = ""),
+      (container.style = "background-image: none"));
 }
 
 function getWeatherType(code) {
