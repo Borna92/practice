@@ -25,11 +25,11 @@ function App() {
   }
 
   function completeTask(task) {
-    setTodoList((todoList) => 
-      todoList.map((item) => 
-        item.id === task.id ? {...item, completed: !item.completed } : item
+    setTodoList(
+      todoList.map((item) =>
+        item.id === task ? { ...item, completed: !item.completed } : item
       )
-    )
+    );
   }
 
   return (
