@@ -1,5 +1,9 @@
 .App {
   text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
 }
 
 .App-logo {
@@ -35,4 +39,27 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+.btn {
+  margin: 1rem;
+  border:none;
+  background-color: transparent;
+  cursor: pointer;
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  align-items: baseline;
+  list-style: none;
+  text-transform: capitalize;
+}
+
+.delete:hover {
+  color: red;
+}
+
+.completed {
+  background-color: green;
 }
